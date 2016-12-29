@@ -1,0 +1,16 @@
+pagination-controls{
+  text-align: center;
+}
+
+.carpools-count{
+  font-style: italic;
+  font-weight: bold;
+  margin-right: 65%;
+  font-size: 15px;
+  color: red;
+  display: inline-block
+}
+.carpool-stats{
+  margin: 30px 5px 15px 5px;
+}
+

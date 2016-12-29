@@ -1,0 +1,102 @@
+<!-- Page Heading/Breadcrumbs -->
+<div class="row">
+  <div class="col-lg-12">
+    <h1 class="page-header">Détail covoiturage</h1>
+  </div>
+</div>
+<!-- /.row -->
+
+<!-- Content Row -->
+<div class="row" *ngIf="carpool">
+  <h2 class="text-center">{{carpool.title}}</h2>
+  <div class="col-md-6">
+    <div class="panel panel-primary text-center">
+      <div class="panel-heading">
+        <h3 class="panel-title"><span class="glyphicon glyphicon-road" aria-hidden="true"></span>
+          Infos covoiturage
+        </h3>
+      </div>
+      <div class="panel-body">
+        <div class="row row-information">
+          <div class="col-sm-4"><i class="fa fa-map-marker"></i> Départ</div>
+          <div class="col-sm-8"><strong>{{carpool.start}}</strong></div>
+        </div>
+        <br>
+        <div class="row row-information">
+          <div class="col-sm-4"><i class="fa fa-flag"></i> Arrivée</div>
+          <div class="col-sm-8"><strong>{{carpool.end}}</strong></div>
+        </div>
+        <br>
+        <div class="row row-information">
+          <div class="col-sm-4"><i class="fa fa-calendar"></i> Date/Heure</div>
+          <div class="col-sm-8">{{carpool.time}}</div>
+        </div>
+        <br>
+        <div class="row row-information">
+          <div class="col-sm-4"><i class="fa fa-car"></i> Véhicule</div>
+          <div class="col-sm-8">{{carpool.car}}</div>
+        </div>
+        <br>
+        <div class="row row-information">
+          <div class="col-sm-4"><i class="fa fa-dollar"></i> Prix</div>
+          <div class="col-sm-8 price">{{carpool.price}}</div>
+        </div>
+        <br>
+        <div class="row row-information">
+          <div class="col-sm-4"><i class="fa fa-users"></i> Places disponibles</div>
+          <div class="col-sm-8"><span class="text-success">{{carpool.available_seats}}</span></div>
+        </div>
+        <br>
+        <div class="row row-information">
+          <div class="col-sm-4"><i class="fa fa-fire"></i> Fumer</div>
+          <div class="col-sm-8">{{carpool.smoke_authorise ? 'Autorisé':'Non autorisé'}}</div>
+        </div>
+        <br>
+
+
+      </div>
+
+
+    </div>
+  </div>
+  <div class="col-md-6">
+    <div class="panel panel-primary text-center">
+      <div class="panel-heading">
+        <h3 class="panel-title"><span class="glyphicon glyphicon-user" aria-hidden="true"></span>
+          Infos conducteur
+        </h3>
+      </div>
+      <div class="panel-body">
+        <div class="row">
+          <div class="col-sm-4">
+            <div class="form-group">
+              <img  class="img-responsive img-thumbnail" *ngIf="carpool.driver.sexe == 'M'" src="../assets/images/homme.png" alt="driver " [ngStyle]="{width: '133px',height:'139px'}">
+              <img  class="img-responsive img-thumbnail" *ngIf="carpool.driver.sexe == 'F'" src="../assets/images/femme.png" alt="driver " [ngStyle]="{width: '133px',height:'139px'}">
+            </div>
+
+          </div>
+        </div>
+        <br>
+
+        <div class="row row-information">
+          <div class="col-sm-6"><i class="fa fa-info"></i> Nom et prénom</div>
+          <div class="col-sm-6">{{carpool.driver.firstname}}- {{carpool.driver.lastname}}</div>
+        </div>
+        <br>
+        <div class="row row-information">
+          <div class="col-sm-6"><i class="fa fa-calendar"></i> Date de naissance</div>
+          <div class="col-sm-6"> {{carpool.driver.birthday}}</div>
+        </div>
+        <br>
+        <div class="row row-information">
+          <div class="col-sm-6"><i class="fa fa-phone"></i> Téléphone</div>
+          <div class="col-sm-6">
+            {{carpool.driver.phone}}
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</div>
+<!-- /.row -->

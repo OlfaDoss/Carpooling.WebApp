@@ -1,0 +1,247 @@
+<!-- Page Heading/Breadcrumbs -->
+<div class="row">
+  <div class="col-lg-12">
+    <h1 class="page-header">Ajout covoiturage</h1>
+  </div>
+</div>
+<!-- /.row -->
+
+<div class="container">
+  <div class="row">
+    <h3 class="col-lg-12 text-center">
+      <span> <i class="glyphicon glyphicon-road"></i></span>
+      Ajouter un trajet
+    </h3>
+  </div>
+  <div class="dt-sc-margin20"></div>
+</div>
+
+<form name="formNewCarpool" style="margin-top:40px;" [formGroup]="form" novalidate (ngSubmit)="addCarpool(form.value, form.valid)">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-12 col-md-12">
+        <div class="form-group col-lg-10 col-md-10 col-lg-offset-1"
+             [ngClass]="{'has-error': !form.controls.title.valid && form.controls.title.touched, 'has-success': form.controls.title.valid}">
+          <label class="control-label" for="title">Titre</label>
+          <input type="text" class="form-control" id="title" name="title" formControlName="title">
+          <div *ngIf="form.controls.title.invalid">
+                <span class="text-danger"
+                      *ngIf="form.controls.title.errors.minlength && form.controls.title.touched">
+                    Le titre doit être au minumum 2 caractéres
+                </span>
+                <span class="text-danger"
+                      *ngIf="form.controls.title.errors.required && form.controls.title.touched">
+                    Le titre est obligatoire
+                </span>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-12 col-md-12">
+        <div class="form-group col-lg-10 col-md-10 col-lg-offset-1"
+             [ngClass]="{'has-error': !form.controls.start.valid && form.controls.start.touched, 'has-success': form.controls.start.valid}">
+          <label class="control-label" for="start">Départ</label>
+          <input type="textarea" class="form-control" id="start" name="start" formControlName="start">
+          <div *ngIf="form.controls.start.invalid">
+              <span class="text-danger"
+                    *ngIf="form.controls.start.errors.required && form.controls.start.touched">
+                  Le départ est obligatoire
+              </span>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-12 col-md-12">
+        <div class="form-group col-lg-10 col-md-10 col-lg-offset-1"
+             [ngClass]="{'has-error': !form.controls.end.valid && form.controls.end.touched, 'has-success': form.controls.end.valid}">
+          <label class="control-label" for="end">Destination</label>
+          <input type="text" class="form-control" id="end" name="end" formControlName="end">
+          <div *ngIf="form.controls.end.invalid">
+              <span class="text-danger"
+                    *ngIf="form.controls.end.errors.required && form.controls.end.touched">
+                  La destination est obligatoire
+              </span>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-12 col-md-12">
+        <div class="form-group col-lg-10 col-md-10 col-lg-offset-1"
+             [ngClass]="{'has-error': !form.controls.frequence.valid && form.controls.frequence.touched, 'has-success': form.controls.frequence.valid}">
+        <label class="control-label" for="frequence">Fréquence</label>
+        <select class="form-control" name="frequence" id="frequence" formControlName="frequence">
+          <option value="regular">Régulier</option>
+          <option value="irregular">Non régulier</option>
+        </select>
+          <div *ngIf="form.controls.frequence.invalid">
+              <span class="text-danger"
+                    *ngIf="form.controls.frequence.errors.required && form.controls.frequence.touched">
+                  La fréquence est obligatoire
+              </span>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-lg-12 col-md-12">
+        <div class="form-group col-lg-10 col-md-10 col-lg-offset-1"
+             [ngClass]="{'has-error': !form.controls.time.valid && form.controls.time.touched, 'has-success': form.controls.time.valid}">
+          <label class="control-label" for="end">Date</label>
+          <input type="text" class="form-control" id="time" name="end" formControlName="time"
+                 placeholder="dd-mm-yy H:i:s">
+          <div *ngIf="form.controls.time.invalid">
+              <span class="text-danger"
+                    *ngIf="form.controls.time.errors.required && form.controls.time.touched">
+                  La date est obligatoire
+              </span>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-12 col-md-12">
+        <div class="form-group col-lg-10 col-md-10 col-lg-offset-1"
+             [ngClass]="{'has-error': !form.controls.car.valid && form.controls.car.touched, 'has-success': form.controls.car.valid}">
+          <label class="control-label" for="car">Voiture</label>
+          <input type="text" class="form-control" id="car" name="car" formControlName="car">
+          <div *ngIf="form.controls.car.invalid">
+              <span class="text-danger"
+                    *ngIf="form.controls.car.errors.required && form.controls.car.touched">
+                  La voiture est obligatoire
+              </span>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-12 col-md-12">
+        <div class="form-group col-lg-10 col-md-10 col-lg-offset-1"
+             [ngClass]="{'has-error': !form.controls.price.valid && form.controls.price.touched, 'has-success': form.controls.price.valid}">
+          <label class="control-label" for="car">Prix</label>
+          <input type="text" class="form-control" id="price" name="price" formControlName="price">
+          <div *ngIf="form.controls.price.invalid">
+              <span class="text-danger"
+                    *ngIf="form.controls.price.errors.required && form.controls.price.touched">
+                  La prix est obligatoire
+              </span>
+             <span class="text-danger"
+                   *ngIf="form.controls.price.errors.pattern && form.controls.price.touched">
+                  La prix doit étre un nombre
+              </span>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-lg-12 col-md-12">
+        <div class="form-group col-lg-10 col-md-10 col-lg-offset-1" [ngClass]="{'has-error': !form.controls.available_seats.valid && form.controls.available_seats.touched, 'has-success': form.controls.available_seats.valid}">
+        <label class="control-label" for="available_seats">Places restantes</label>
+        <select class="form-control" name="available_seats" id="available_seats"  formControlName="available_seats">
+            <option value="1"> 1</option>
+            <option value="2"> 2</option>
+            <option value="3"> 3</option>
+            <option value="4"> 4</option>
+        </select>
+        <div *ngIf="form.controls.available_seats.invalid">
+              <span class="text-danger"
+                    *ngIf="form.controls.available_seats.errors.required && form.controls.available_seats.touched">
+                  Les places restantes sont obligatoires
+              </span>
+        </div>
+          </div>
+      </div>
+
+      <div class="col-lg-12 col-md-12">
+        <div class="form-group col-lg-10 col-md-10 col-lg-offset-1"
+             [ngClass]="{'has-error': !form.controls.smoke_authorise.valid && form.controls.smoke_authorise.touched, 'has-success': form.controls.smoke_authorise.valid}">
+        <label class="control-label" for="smoke_authorise">Fumée authorisée</label>
+          <select class="form-control" name="smoke_authorise" id="smoke_authorise" formControlName="smoke_authorise">
+            <option value="1">Oui</option>
+            <option value="0">Non</option>
+          </select>
+          <div *ngIf="form.controls.smoke_authorise.invalid">
+              <span class="text-danger"
+                    *ngIf="form.controls.smoke_authorise.errors.required && form.controls.smoke_authorise.touched">
+                  Ce champs est obligatoire
+              </span>
+          </div>
+        </div>
+      </div>
+
+      <h4 class="col-lg-12 text-center"><span> <i class="fa fa-user"></i></span>
+        Le conducteur </h4>
+      <div class="col-lg-12 col-md-12">
+        <div class="form-group col-lg-5 col-md-5 col-sm-6 col-xs-12 col-lg-offset-1"
+             [ngClass]="{'has-error': !form.controls.driver_firstname.valid && form.controls.driver_firstname.touched, 'has-success': form.controls.driver_firstname.valid}">
+          <label class="control-label" for="driver_firstname">Prenom</label>
+          <input type="text" class="form-control" id="driver_firstname" name="driver_firstname"
+                 formControlName="driver_firstname">
+          <div *ngIf="form.controls.driver_firstname.invalid">
+            <span class="text-danger"
+                  *ngIf="form.controls.driver_firstname.errors.required && form.controls.driver_firstname.touched">
+                Le prénom du conducteur est obligatoire
+            </span>
+          </div>
+        </div>
+        <div class="form-group col-lg-5 col-md-5 col-sm-6 col-xs-12"
+             [ngClass]="{'has-error': !form.controls.driver_lastname.valid && form.controls.driver_lastname.touched, 'has-success': form.controls.driver_lastname.valid}">
+          <label
+            class="control-label" for="driver_lastname">Nom</label>
+          <input type="text" class="form-control" id="driver_lastname" name="driver_lastname"
+                 formControlName="driver_lastname">
+          <div *ngIf="form.controls.driver_lastname.invalid">
+            <span class="text-danger"
+                  *ngIf="form.controls.driver_lastname.errors.required && form.controls.driver_lastname.touched">
+                La nom du conducteur est obligatoire
+            </span>
+          </div>
+        </div>
+      </div>
+
+      <div class="form-group col-lg-5 col-md-5 col-sm-6 col-xs-12 col-lg-offset-1"
+             [ngClass]="{'has-error': !form.controls.driver_phone.valid && form.controls.driver_phone.touched, 'has-success': form.controls.driver_phone.valid}">
+          <label
+            class="control-label" for="driver_phone">Téléphone</label>
+          <input type="text" class="form-control" id="driver_phone" name="driver_phone"
+                 formControlName="driver_phone">
+          <div *ngIf="form.controls.driver_phone.invalid">
+            <span class="text-danger"
+                  *ngIf="form.controls.driver_phone.errors.required && form.controls.driver_phone.touched">
+                La téléphone du conducteur est obligatoire
+            </span>
+            <span class="text-danger"
+                  *ngIf="form.controls.driver_phone.errors.pattern && form.controls.price.touched">
+                  La numéro téléphone doit étre un nombre
+              </span>
+          </div>
+      </div>
+      <div class="form-group col-lg-5 col-md-5 col-sm-6 col-xs-12">
+          <label class="control-label" for="driver_birthday">Date de naissance</label>
+          <input type="text" class="form-control" id="driver_birthday" name="driver_birthday">
+      </div>
+
+      <div class="col-lg-12 col-md-12">
+        <div class="form-group col-lg-10 col-md-10 col-lg-offset-1"
+             [ngClass]="{'has-error': !form.controls.driver_sexe.valid && form.controls.driver_sexe.touched, 'has-success': form.controls.driver_sexe.valid}">
+        <label class="control-label" for="driver_sexe">Sexe</label>
+          <select class="form-control" name="driver_sexe" id="driver_sexe" formControlName="driver_sexe">
+            <option value="M">Homme</option>
+            <option value="F">Femme</option>
+          </select>
+          <div *ngIf="form.controls.driver_sexe.invalid">
+            <span class="text-danger"
+                  *ngIf="form.controls.driver_sexe.errors.required && form.controls.driver_sexe.touched">
+                La sexe du conducteur est obligatoire
+            </span>
+          </div>
+        </div>
+      </div>
+
+
+    </div>
+
+    <div class='text-center'>
+        <div class="btn-group">
+          <button type="submit" name="btnValide" class="btn btn-primary center-block">
+            Créer
+          </button>
+          <button type="button" id="btnAnnuler" name="btnAnnuler" class="btn btn-info center-block">
+            Annuler
+          </button>
+        </div>
+    </div>
+
+  </div>
+</form>
+
